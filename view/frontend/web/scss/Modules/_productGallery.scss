@@ -1,0 +1,92 @@
+/*!
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the General Public License (GPL 3.0).
+ * This license is available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/gpl-3.0.en.php
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this module to newer
+ * versions in the future.
+ *
+ * @category    Maxserv: Magento Modules
+ * @package     MaxServ_ProductGallery
+ * @author      Vincent Hornikx <vincent.hornikx@maxser.com>
+ * @copyright   Copyright (c) 2016 MaxServ (http://www.maxserv.com)
+ * @license     http://opensource.org/licenses/gpl-3.0.en.php General Public License (GPL 3.0)
+ */
+
+.productGallery {
+
+    max-width: calc(100vw - 30px);
+    overflow: hidden;
+
+    .productGallery-navigation {
+        display: none;
+    }
+    @media all and (min-width: 768px) {
+        .productGallery-navigation {
+            display: initial;
+        }
+    }
+
+    .productGallery-images {
+        margin-bottom: 15px;
+    }
+
+    .productGallery-image {
+        display: none;
+        transition: width 0.3s linear, height 0.3s linear;
+
+        &:first-child {
+            display:block;
+        }
+
+        .productGallery-image-medium {
+            display: block;
+        }
+
+        .productGallery-image-large {
+            display: none;
+        }
+
+        .productGallery-image-medium,
+        .productGallery-image-large {
+            margin: 0 auto;
+        }
+    }
+
+    .productGallery-images.owl-carousel .productGallery-image {
+        display: block;
+    }
+
+    .productGallery-thumbnails {
+        max-height: 0;
+        transition: max-height 0.5s ease-out;
+
+        &.owl-carousel {
+            max-height: 200px;
+        }
+    }
+
+    .productGallery-thumbnail {
+        display: block;
+        overflow: hidden;
+        border: 2px solid transparent;
+        transition: border-color 0.3s linear;
+
+        &.active {
+            border-color: #869791;
+        }
+
+        img {
+            display: block;
+            width: calc(100% - 5px);
+            max-width: 130px;
+            margin-right: auto;
+            margin-left: auto;
+            height: auto;
+        }
+    }
+}
