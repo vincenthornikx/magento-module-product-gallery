@@ -34,9 +34,11 @@ define([
                 autoHeight: true,
                 singleItem: true,
                 pagination: false,
+                startDragging: function() {
+                    widget.blockLarge = true;
+                },
                 afterMove: function() {
                     widget.setImage(this.currentItem);
-                    widget.blockLarge = true;
                     setTimeout(function() {
                         widget.blockLarge = false;
                     }, 100);
@@ -55,10 +57,18 @@ define([
                 itemsDesktopSmall: [980, 4],
                 itemsTablet: [768, 3],
                 itemsTabletSmall: false,
-                itemsMobile: false
+                itemsMobile: false,
+                startDragging: function() {
+                    widget.blockThumb = true;
+                }
             };
             widget.thumbs.owlCarousel(widget.thumbsOptions).find('a').on('click', function(e) {
                 e.preventDefault();
+                console.log('thumb click');
+                if (widget.blockThumb) {
+                    widget.blockThumb = false;
+                    return;
+                }
                 widget.setImage($(this).data('index'));
             }).eq(0).addClass('active');
             widget.thumbsOwl = widget.thumbs.data('owlCarousel');
